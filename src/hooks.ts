@@ -157,7 +157,7 @@ function defaultReduce<H, R>(hook: H): H | R {
   return hook;
 }
 
-function getHook<+H, R>(
+function getHook<H, R>(
   createHook: () => H,
   shouldUpdate: (hook: H) => boolean,
   reduce: (hook: H) => R,
@@ -193,7 +193,7 @@ export function prepareHooksForRender() {
   }
 
   // call all the pending update before trying to render,
-  const pendingUpdates = ((getPendingUpdates(fiber): any): Array<FunctionalComponentUpdate>);
+  const pendingUpdates = getPendingUpdates(fiber) as Array<FunctionalComponentUpdate>;
   pendingUpdates.forEach((task) => task.updater());
 }
 
@@ -358,7 +358,7 @@ function useEffectBase(effectHandler, dependencies) {
 /**
  * Use effect hook
  */
-export function useEffect(callback: () => ?Function, dependencies: Array<any>): void {
+export function useEffect(callback: () => Function | null | undefined, dependencies: Array<any>): void {
   useEffectBase((hook) => {
     /**
      * Run effect asynchronously after the paint cycle is finished
@@ -376,7 +376,7 @@ export function useEffect(callback: () => ?Function, dependencies: Array<any>): 
   }, dependencies);
 }
 
-export function useLayoutEffect(callback: () => ?Function, dependencies: Array<any>): void {
+export function useLayoutEffect(callback: () => Function | null | undefined, dependencies: Array<any>): void {
   useEffectBase((hook) => {
     // run effect synchronously
     hook.cleanEffect = callback();
