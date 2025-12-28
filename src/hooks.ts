@@ -430,8 +430,12 @@ export function useContext(Context: ContextType): any {
 /**
  * Transition hook
  */
-export function useTransition({ timeoutMs }: TransitionOptions): UseTransitionResult {
-  const component = getCurrentComponent();
+export function useTransition(options): UseTransitionResult {
+  /**
+   * Set default timeout to 3000ms if not specified.
+   * This ensures a consistent UX and acts as a safety net for pending states.
+   */
+  const timeoutMs = (options && options.timeoutMs !== undefined) ? options.timeoutMs : 3000;  const component = getCurrentComponent();
 
   return getHook(
     () => {
@@ -501,8 +505,12 @@ export function useTransition({ timeoutMs }: TransitionOptions): UseTransitionRe
     },
     defaultShouldUpdate,
     ({ startTransition, isPending }: Transition): UseTransitionResult => [
-      startTransition,
+      /**
+       * Reordered the return value to [isPending, startTransition] 
+       * to match the modern React API signature.
+       */
       isPending,
+      startTransition,
     ],
   );
 }
