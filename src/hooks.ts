@@ -518,8 +518,9 @@ export function useTransition(options): UseTransitionResult {
 /**
  * A hook to have deferred value
  */
-export function useDeferredValue(value: any, { timeoutMs }: DeferredValueHookOptions): any {
-  const [startTransition] = useTransition({ timeoutMs });
+export function useDeferredValue(value: any, options): any {
+  const timeoutMs = (options && options.timeoutMs !== undefined) ? options.timeoutMs : 3000;
+  const [, startTransition] = useTransition({ timeoutMs });
   const [deferredValue, setDeferredValue] = useState(value);
   const timeStampRef = useRef(0);
 
@@ -546,7 +547,7 @@ export function useDeferredValue(value: any, { timeoutMs }: DeferredValueHookOpt
     startTransition(() => {
       setDeferredValue(value);
     });
-  }, [value]);
+  }, [value, startTransition]);
 
   return deferredValue;
 }
