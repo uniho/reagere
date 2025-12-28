@@ -7,15 +7,13 @@
   "author": "uniho",
   "license": "MIT",
   "scripts": {
-    "flow": "flow",
     "test": "jest",
     "test:watch": "jest --watch --collect-coverage=false",
     "test:debug": "node --inspect-brk ./node_modules/.bin/jest --runInBand --watch --collect-coverage=false",
     "test:bundlesize": "yarn bundle && bundlesize",
     "start": "webpack-dev-server --open",
     "build": "node esbuild.build.mjs",
-    "bundle": "cross-env NODE_ENV=production rollup -c rollup.config.js",
-    "lint": "eslint ./src ./example --fix"
+    "bundle": "cross-env NODE_ENV=production rollup -c rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -23,32 +21,5 @@
   },
   "bugs": {
     "url": "https://github.com/uniho/reagere/issues"
-  },
-  "devDependencies": {
-    "@testing-library/dom": "^7.26.6",
-    "bulma": "^0.9.0",
-    "bundlesize": "^0.18.0",
-    "cross-env": "^7.0.2",
-    "css-loader": "^4.3.0",
-    "flow-bin": "^0.133.0",
-    "google-closure-compiler": "^20200830.0.0",
-    "html-webpack-plugin": "^4.4.1",
-    "jest": "^26.4.2",
-    "js-beautify": "^1.13.0",
-    "mobx": "^6.0.4",
-    "mobx-react-lite": "^3.1.6",
-    "prettier": "^2.1.2",
-    "react-query": "^2.26.3",
-    "react-redux": "^7.2.2",
-    "react-router-dom": "^5.2.0",
-    "recharts": "^1.8.5",
-    "redux": "^4.0.5",
-    "sass": "^1.26.11",
-    "sass-loader": "^10.0.2",
-    "style-loader": "^1.2.1",
-    "zustand": "^3.2.0"
-  },
-  "resolutions": {
-    "@ampproject/rollup-plugin-closure-compiler/google-closure-compiler": "^20200830.0.0"
   }
 }
