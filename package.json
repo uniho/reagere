@@ -8,13 +8,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch --collect-coverage=false",
-    "test:debug": "node --inspect-brk ./node_modules/.bin/jest --runInBand --watch --collect-coverage=false",
-    "test:bundlesize": "yarn bundle && bundlesize",
-    "start": "webpack-dev-server --open",
-    "build": "node esbuild.build.mjs",
-    "bundle": "cross-env NODE_ENV=production rollup -c rollup.config.js"
+    "build": "node ./scripts/build-core.mjs",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
