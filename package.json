@@ -6,6 +6,7 @@
   "module": "dist/brahmos.es.js",
   "author": "uniho",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch --collect-coverage=false",
