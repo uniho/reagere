@@ -16,34 +16,15 @@ Brahmos supports all the APIs of React including the upcoming concurrent mode AP
 - Smaller transpiled footprint of your source code, than traditional JSX.
 
 ## Installation
-### Create Brahmos App
-Use [Create a New Brahmos App](https://www.npmjs.com/package/create-brahmos-app) if you're looking for a powerful JavaScript toolchain.
 
-### Manual installation
-
-Add `brahmos` as dependency. And `babel-plugin-brahmos` as dev dependency.
-```
-npm install brahmos
-npm install babel-plugin-brahmos --save-dev
-```
-
-Add brahmos in your babel config.
-```
-{
-  presets: ['@babel/preset-env'],
-  plugins: [
-    //...
-    'brahmos'
-  ]
-}
-```
-**Note:** You will have to remove react preset from babel if you trying brahmos on existing project.
+npm install reagere
+npm install -D esbuild acorn acorn-jsx astring
 
 ## Usage
-The API is exact same as React so build how you build application with React, but instead of importing from `react` or `react-dom` import from `brahmos`;
+The API is exact same as React so build how you build application with React, but instead of importing from `react` or `react-dom` import from `reagere`;
 
 ```js
-import {useState, useEffect} from 'brahmos';
+import {useState, useEffect} from 'reagere';
 
 export default function App(props) {
   const [state, setState] = useState(0);
