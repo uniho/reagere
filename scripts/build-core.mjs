@@ -3,7 +3,7 @@ import esbuild from 'esbuild'
 //
 await esbuild.build({
   entryPoints: [
-    "../src/core/index.js",
+    "./src/core/index.js",
   ],
   outdir: 'lib',
   bundle: true,
